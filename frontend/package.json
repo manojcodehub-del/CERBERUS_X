@@ -1,0 +1,28 @@
+{
+  "name": "cerberus-x-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "@tailwindcss/vite": "^4.1.0",
+    "@vitejs/plugin-react": "^6.0.1",
+    "@xyflow/react": "^12.8.6",
+    "framer-motion": "^14.14.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "recharts": "^3.0.0",
+    "three": "^0.187.0",
+    "vite": "^8.3.5"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.0"
+  }
+}

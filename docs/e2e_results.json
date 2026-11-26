@@ -1,0 +1,232 @@
+{
+  "sample_dataset": "data\\datasets\\phase4_demo_synthetic_budget.txt",
+  "step0_health": {
+    "status": "ok",
+    "database": "connected",
+    "system": {
+      "status": "ok",
+      "application": "CERBERUS-X",
+      "environment": "development",
+      "database": "connected",
+      "upload_storage": "ready",
+      "document_processing": "available",
+      "ocr_engine": "unavailable"
+    }
+  },
+  "step1_pdf_upload": {
+    "document_id": "86223abb-982d-4fe7-8018-ddc30ed1ba51",
+    "filename": "phase7_demo_alpha_charter.pdf"
+  },
+  "step2_extraction": {
+    "document_id": "86223abb-982d-4fe7-8018-ddc30ed1ba51",
+    "job_id": "fff72f19-5f3f-4faa-998b-6ed61e433e22",
+    "status": "COMPLETED",
+    "evidence_count": 1,
+    "claim_count": 5,
+    "warnings": [],
+    "error": null
+  },
+  "step3_provenance": {
+    "evidence_count": 1,
+    "evidence_id": 1,
+    "page_number": 1,
+    "source_text_contains_budget": true
+  },
+  "step4_embedding": {
+    "status": "completed",
+    "model": "nomic-embed-text:latest",
+    "chunks": 1,
+    "generated_embeddings": 1,
+    "embedding_model_installed": true,
+    "indexed_chunks": 1
+  },
+  "step5_search": {
+    "retrieval_method": "hybrid",
+    "result_count": 1,
+    "top_evidence_id": 1,
+    "matched_sample_evidence_id": 1
+  },
+  "step6_answer_citation": {
+    "answer": "INR 1,250,000",
+    "model": "qwen3.5:4b",
+    "abstained": false,
+    "citation": {
+      "evidence_id": 1,
+      "document_id": "86223abb-982d-4fe7-8018-ddc30ed1ba51",
+      "filename": "phase7_demo_alpha_charter.pdf",
+      "content_type": "page_text",
+      "text": "SYNTHETIC DEMONSTRATION DATA ? invented values for local CERBERUS-X testing only; this is\nnot a real project record.\nProject ID: DEMO-ALPHA\nThe approved project budget for Project DEMO-ALPHA is INR 1,250,000.\nApproval date: 2026-11-24.\nThe vendor quotation is INR 1,400,000 and is not the approved budget.",
+      "context_text": null,
+      "page_number": 1,
+      "sheet_name": null,
+      "row_number": null,
+      "column_name": null,
+      "cell_coordinate": null,
+      "paragraph_index": null,
+      "table_index": null,
+      "extraction_method": "pymupdf",
+      "extraction_confidence": null,
+      "score": 0.7716,
+      "retrieval_method": "hybrid",
+      "citation_order": 1,
+      "quoted_text": "The approved project budget for Project DEMO-ALPHA is INR 1,250,000."
+    }
+  },
+  "step7_conflict_source": {
+    "document_id": "cf950c84-0315-42ee-b1e1-f57955bff088",
+    "filename": "phase7_demo_alpha_amendment.txt",
+    "status": "COMPLETED",
+    "evidence_count": 5
+  },
+  "step8_conflict_analysis": {
+    "normalized_claims": 10,
+    "classification": "CONFIRMED_CONFLICT",
+    "conflict_id": 1,
+    "claims": [
+      {
+        "document_id": "86223abb-982d-4fe7-8018-ddc30ed1ba51",
+        "filename": "phase7_demo_alpha_charter.pdf",
+        "original_value": "INR 1,250,000",
+        "source_location": {
+          "cell_coordinate": null,
+          "column_name": null,
+          "page_number": 1,
+          "paragraph_index": null,
+          "row_number": null,
+          "sheet_name": null,
+          "table_index": null
+        },
+        "evidence_id": 1
+      },
+      {
+        "document_id": "cf950c84-0315-42ee-b1e1-f57955bff088",
+        "filename": "phase7_demo_alpha_amendment.txt",
+        "original_value": "INR 1,850,000",
+        "source_location": {
+          "cell_coordinate": null,
+          "column_name": null,
+          "page_number": null,
+          "paragraph_index": 2,
+          "row_number": null,
+          "sheet_name": null,
+          "table_index": null
+        },
+        "evidence_id": 4
+      }
+    ]
+  },
+  "step9_reliability": {
+    "sources": [
+      {
+        "document_id": "86223abb-982d-4fe7-8018-ddc30ed1ba51",
+        "filename": "phase7_demo_alpha_charter.pdf",
+        "score": 0.72,
+        "approval_status": "approved",
+        "explanation": "Authority: No source authority metadata is available; authority remains neutral. Approval Status: Explicit approval, signature or final-state language was found; this is a textual signal only. Recency: Neutral: trusted source-publication date is not stored; upload time is not treated as publication time. Directness: Deterministic claims link directly to extracted source evidence. Completeness: 1 of 1 evidence records contain original text. Extraction Quality: Based on recorded extraction confidence; missing confidence values are treated neutrally. Independent Corroboration: 1 distinct source fingerprint(s) repeat a normalized assertion; document independence is not verified.",
+        "criteria": {
+          "approval_status": {
+            "reason": "Explicit approval, signature or final-state language was found; this is a textual signal only.",
+            "score": 0.95
+          },
+          "authority": {
+            "reason": "No source authority metadata is available; authority remains neutral.",
+            "score": 0.5
+          },
+          "completeness": {
+            "reason": "1 of 1 evidence records contain original text.",
+            "score": 1.0
+          },
+          "directness": {
+            "reason": "Deterministic claims link directly to extracted source evidence.",
+            "score": 0.85
+          },
+          "extraction_quality": {
+            "reason": "Based on recorded extraction confidence; missing confidence values are treated neutrally.",
+            "score": 0.5
+          },
+          "independent_corroboration": {
+            "reason": "1 distinct source fingerprint(s) repeat a normalized assertion; document independence is not verified.",
+            "score": 0.7
+          },
+          "recency": {
+            "reason": "Neutral: trusted source-publication date is not stored; upload time is not treated as publication time.",
+            "score": 0.5
+          }
+        }
+      },
+      {
+        "document_id": "cf950c84-0315-42ee-b1e1-f57955bff088",
+        "filename": "phase7_demo_alpha_amendment.txt",
+        "score": 0.72,
+        "approval_status": "approved",
+        "explanation": "Authority: No source authority metadata is available; authority remains neutral. Approval Status: Explicit approval, signature or final-state language was found; this is a textual signal only. Recency: Neutral: trusted source-publication date is not stored; upload time is not treated as publication time. Directness: Deterministic claims link directly to extracted source evidence. Completeness: 5 of 5 evidence records contain original text. Extraction Quality: Based on recorded extraction confidence; missing confidence values are treated neutrally. Independent Corroboration: 1 distinct source fingerprint(s) repeat a normalized assertion; document independence is not verified.",
+        "criteria": {
+          "approval_status": {
+            "reason": "Explicit approval, signature or final-state language was found; this is a textual signal only.",
+            "score": 0.95
+          },
+          "authority": {
+            "reason": "No source authority metadata is available; authority remains neutral.",
+            "score": 0.5
+          },
+          "completeness": {
+            "reason": "5 of 5 evidence records contain original text.",
+            "score": 1.0
+          },
+          "directness": {
+            "reason": "Deterministic claims link directly to extracted source evidence.",
+            "score": 0.85
+          },
+          "extraction_quality": {
+            "reason": "Based on recorded extraction confidence; missing confidence values are treated neutrally.",
+            "score": 0.5
+          },
+          "independent_corroboration": {
+            "reason": "1 distinct source fingerprint(s) repeat a normalized assertion; document independence is not verified.",
+            "score": 0.7
+          },
+          "recency": {
+            "reason": "Neutral: trusted source-publication date is not stored; upload time is not treated as publication time.",
+            "score": 0.5
+          }
+        }
+      }
+    ],
+    "score_notice": "Heuristic review aid only; not a scientifically validated reliability probability. Default weights are configured in source_reliability.py and can be overridden with CERBERUS_RELIABILITY_WEIGHTS JSON. Distinct text fingerprints are only a proxy for source independence. Recency uses a neutral score because a trusted source-publication date is not currently stored."
+  },
+  "step10_graph": {
+    "node_count": 22,
+    "edge_count": 50,
+    "sample_documents_present": true,
+    "conflicting_claim_nodes_present": true
+  },
+  "step11_verification": {
+    "abstained": true,
+    "conflict_assessment": "CONFIRMED_CONFLICT",
+    "evidence_count": 6,
+    "comparison_count": 3,
+    "retrieval_method": "hybrid"
+  },
+  "image_ocr_test": {
+    "status": "OCR_UNAVAILABLE",
+    "ocr_working": false,
+    "expected_text_found": false,
+    "warnings": [
+      "Local Tesseract OCR is unavailable. Install Tesseract or configure TESSERACT_CMD."
+    ],
+    "recognized_text": "Image format: PNG; dimensions: 1400x240"
+  },
+  "step12_restart_persistence": {
+    "health": "ok",
+    "documents": 3,
+    "sample_evidence_records": 1,
+    "indexed_chunks": 6,
+    "graph_nodes": 24,
+    "graph_edges": 51
+  },
+  "step13_persisted_rows": {
+    "questions": 1,
+    "answer_citations": 1,
+    "embedding_chunks": 6
+  }
+}
